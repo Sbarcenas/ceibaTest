@@ -1,21 +1,17 @@
-// USER
-export const UPDATE_USER = 'UPDATE_USER';
-
-// AUTH
-export const USER_LOADED = 'USER_LOADED';
-export const USER_LOADING = 'USER_LOADING';
-export const AUTH_ERROR = 'AUTH_ERROR';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_FAIL = 'LOGIN_FAIL';
-export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
-export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
-export const REGISTER_FAIL = 'REGISTER_FAIL';
-export const RESET_SESSION = 'RESET_SESSION';
-export const UPDATE_AUTH = 'UPDATE_AUTH';
+// USERS ACTIONS
+export const USERS_LOADED = "USERS_LOADED";
+export const USERS_LOADING = "USERS_LOADING";
+export const GET_USERS = "UPDATE_USER";
+export const CREATE_USER = "CREATE_USER";
+export const GET_USERS_SUCCESS = "GET_USERS_SUCCESS";
+export const GET_USERS_FAIL = "GET_USERS_FAIL";
+export const CREATE_USER_FAIL = "CREATE_USER_FAIL";
+export const CREATE_USER_SUCCESS = "CREATE_USER_SUCCESS";
+export const SET_PAGE = "SET_PAGE";
 
 //ERROR ACTIONS
-export const GET_ERRORS = 'GET_ERRORS';
-export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+export const GET_ERRORS = "GET_ERRORS";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
-// CONFIG REDUCER
-export const SET_TOP_BAR = 'SET_TOP_BAR';
+// CONFIG ACTIONS
+export const RESET_SESSION = "RESET_SESSION";

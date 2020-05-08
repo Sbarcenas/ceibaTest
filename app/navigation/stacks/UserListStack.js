@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { ListUser } from "../../screens";
 
 const Stack = createStackNavigator();
-export default function ListUserStack() {
+export default function UserListStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen

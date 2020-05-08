@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { colors } from "../../utils/theme";
+import { colors } from "../../../utils/theme";
 import { Icon } from "react-native-elements";
 
 function ListTextItem(props) {
