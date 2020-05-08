@@ -6,11 +6,12 @@ import { addUser, getUsers } from "../redux/actions/usersActions";
 import * as Yup from "yup";
 import { Formik } from "formik";
 import { Avatar, Button, Icon } from "react-native-elements";
-import { MainInput } from "../components/shared";
+import { AvatarPic, MainInput } from "../components/shared";
 import { colors } from "../utils/theme";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import * as Permissions from "expo-permissions";
 import * as ImagePicker from "expo-image-picker";
+import { getMainErrorYup } from "../utils/helpers";
 
 function CreateUser(props) {
   const dispatch = useDispatch();
@@ -49,8 +50,10 @@ function CreateUser(props) {
     }
   };
 
-  const onAdd = values => {
-    dispatch(addUser(values));
+  const onAdd = async (values, { resetForm }) => {
+    await dispatch(addUser(values));
+    resetForm({});
+    toast.current.show("Usuario añadido con éxito");
   };
 
   return (
@@ -64,7 +67,6 @@ function CreateUser(props) {
         enableReinitialize
         validationSchema={userSchema}
         initialValues={{
-          avatar: "",
           first_name: "",
           last_name: "",
           email: ""
@@ -74,23 +76,20 @@ function CreateUser(props) {
         {({ handleChange, handleSubmit, values, setFieldValue, errors }) => (
           <View>
             <View style={{ alignItems: "center", marginTop: 20 }}>
-              <Avatar
-                rounded
-                size="xlarge"
-                showAccessory
+              <AvatarPic
+                source={values.avatar}
                 onAccessoryPress={async () => {
                   const avatar = await changeAvatar();
                   setFieldValue("avatar", avatar);
                 }}
-                containerStyle={styles.userAvatar}
-                icon={{ name: "user", type: "font-awesome" }}
-                source={{
-                  uri: values.avatar
-                }}
               />
             </View>
+
             <View style={styles.formContainer}>
+              <Text style={styles.errorText}>{getMainErrorYup(errors)}</Text>
+
               <MainInput
+                accessibilityLabel="input"
                 onChangeText={handleChange("first_name")}
                 value={values.first_name}
                 placeholder={"Primer nombre"}
@@ -104,6 +103,7 @@ function CreateUser(props) {
                 }
               />
               <MainInput
+                accessibilityLabel="input"
                 onChangeText={handleChange("last_name")}
                 value={values.last_name}
                 placeholder={"Segundo nombre"}
@@ -117,6 +117,7 @@ function CreateUser(props) {
                 }
               />
               <MainInput
+                accessibilityLabel="input"
                 onChangeText={handleChange("email")}
                 value={values.email}
                 placeholder={"Correo electronico"}
@@ -145,7 +146,6 @@ function CreateUser(props) {
 }
 
 const styles = StyleSheet.create({
-  userAvatar: { marginTop: 50 },
   inputIcon: {
     color: colors.boldGray,
     alignSelf: "center"
@@ -160,6 +160,13 @@ const styles = StyleSheet.create({
   },
   textButton: {
     marginHorizontal: 30
+  },
+  errorText: {
+    alignSelf: "flex-start",
+    marginLeft: 20,
+    fontWeight: "300",
+    fontSize: 12,
+    color: colors.red
   }
 });
 export default CreateUser;

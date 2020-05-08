@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
 import { Image } from "react-native-elements";
 
 function UserCard(props) {
   const { email, first_name, last_name, avatar } = props;
-  useEffect(() => {
-    console.info(props);
-  }, []);
+
   return (
     <View style={styles.container}>
       <Image
@@ -44,6 +42,7 @@ const styles = StyleSheet.create({
     fontSize: 12
   },
   textContainer: {
+    width: "70%",
     marginLeft: 10,
     justifyContent: "center"
   }

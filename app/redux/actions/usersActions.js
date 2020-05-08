@@ -1,4 +1,3 @@
-import { returnErrors } from "./ErrorActions";
 import reqresClient from "../../service/reqresApi";
 import {
   CREATE_USER,

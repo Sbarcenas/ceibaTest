@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     height: 37,
     flexDirection: "row"
   },
-  inputContainer: { alignSelf: "center", justifyContent: "center" },
-  input: { marginLeft: 5, fontSize: 15 }
+  inputContainer: { alignSelf: "center", justifyContent: "center", flex: 1 },
+  input: { marginLeft: 5, fontSize: 15, width: "100%" }
 });
 export default MainInput;

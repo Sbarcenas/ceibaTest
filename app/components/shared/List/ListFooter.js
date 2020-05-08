@@ -1,7 +1,5 @@
 import React from "react";
 import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
-import { Loading } from "../index";
-import { color } from "react-native-reanimated";
 import { colors } from "../../../utils/theme";
 
 function ListFooter(props) {
